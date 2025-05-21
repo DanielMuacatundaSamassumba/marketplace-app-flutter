@@ -8,4 +8,6 @@ class ImagePaths {
    static String arrowRight = "arrow-right-02.png";
    static String arrowRightOrangeColor = "arrowbgfull.png";
    static String logoWithoutText = "LogoWiroutText.png";
+   static String eyesIconOPened = "eyesIconOPened.png";
+   static String eyesIconClose = "eyeCloseIcon.png";
 }

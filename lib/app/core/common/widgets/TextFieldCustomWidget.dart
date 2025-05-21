@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:marketplace_app/app/core/enums/textfieldEnum.dart';
 import 'package:marketplace_app/app/core/theme/AppPallete.dart';
 
+
 class TextFieldCustomWidget extends StatefulWidget {
   final String imageIcon;
   final TextfieldenumType fieldType;
@@ -10,7 +11,13 @@ class TextFieldCustomWidget extends StatefulWidget {
   final String hitText;
   final double width;
   final double height;
-  const TextFieldCustomWidget({
+  final String? hideIconPasswordOpened;
+  final String? hideIconPasswordClose;
+  final TextEditingController controller;
+  final FormFieldValidator<String>? validator;
+  final Function()? Onchange;
+
+  TextFieldCustomWidget({
     super.key,
     required this.imageIcon,
     required this.fieldType,
@@ -18,6 +25,11 @@ class TextFieldCustomWidget extends StatefulWidget {
     required this.label,
     required this.height,
     required this.width,
+    this.hideIconPasswordOpened,
+    this.hideIconPasswordClose,
+    this.Onchange,
+    required this.validator,
+    required this.controller
   });
   @override
   State<TextFieldCustomWidget> createState() => _TextFieldCustomWidgetState();
@@ -57,7 +69,10 @@ class _TextFieldCustomWidgetState extends State<TextFieldCustomWidget> {
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.only(left: 5),
-                      child: TextField(
+                      child: TextFormField(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: widget.validator,
+                        controller: widget.controller,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           hintText: widget.hitText,
@@ -81,6 +96,7 @@ class _TextFieldCustomWidgetState extends State<TextFieldCustomWidget> {
               bottom: BorderSide(color: AppPallete.greyColorWhite, width: 1),
             ),
           ),
+
           child: Column(
             children: [
               Container(
@@ -101,14 +117,32 @@ class _TextFieldCustomWidgetState extends State<TextFieldCustomWidget> {
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.only(left: 5),
-                      child: TextField(
+                      child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         obscureText: isShow,
+                        controller: widget.controller,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: widget.validator,
                         decoration: InputDecoration(
                           hintText: widget.hitText,
                           border: InputBorder.none,
                         ),
                       ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: showPassword,
+                    child: Image(
+                      image:
+                          isShow
+                              ? AssetImage(
+                                "assets/${widget.hideIconPasswordOpened}",
+                              )
+                              : AssetImage(
+                                "assets/${widget.hideIconPasswordClose}",
+                              ),
+                      width: 24,
+                      height: 25,
                     ),
                   ),
                 ],
