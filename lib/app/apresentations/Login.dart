@@ -13,7 +13,7 @@ import 'package:marketplace_app/app/infra/Irepository/UserLoginImp.dart';
 import 'package:get_it/get_it.dart';
 import 'package:marketplace_app/main.dart';
 
-class Home extends StatelessWidget {
+class Login extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
