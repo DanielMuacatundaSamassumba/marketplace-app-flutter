@@ -27,7 +27,7 @@ class TextFieldCustomWidget extends StatefulWidget {
     this.hideIconPasswordOpened,
     this.hideIconPasswordClose,
     this.Onchange,
-    required this.validator,
+     this.validator,
     required this.controller,
   });
   @override
@@ -186,7 +186,6 @@ class _TextFieldCustomWidgetState extends State<TextFieldCustomWidget> {
 
                       Expanded(
                         child: Container(
-                          
                           margin: EdgeInsets.only(left: 5),
                           child: TextFormField(
                             keyboardType: TextInputType.text,
@@ -219,7 +218,10 @@ class _TextFieldCustomWidgetState extends State<TextFieldCustomWidget> {
               width: widget.width,
               child: Text(
                 widget.label,
-                style: TextStyle(color: AppPallete.greyColorWhite, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  color: AppPallete.greyColorWhite,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
             Row(
@@ -233,8 +235,7 @@ class _TextFieldCustomWidgetState extends State<TextFieldCustomWidget> {
                       ),
                     ),
                   ),
-                  width: widget.width,
-                  height: widget.height,
+
                   child: Row(
                     children: [
                       Image(
@@ -250,11 +251,10 @@ class _TextFieldCustomWidgetState extends State<TextFieldCustomWidget> {
                             keyboardType: TextInputType.text,
                             controller: widget.controller,
                             autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
+                            AutovalidateMode.onUserInteraction,
                             validator: widget.validator,
                             decoration: InputDecoration(
                               hintText: widget.hitText,
-                              border: InputBorder.none,
                             ),
                           ),
                         ),

@@ -11,4 +11,6 @@ class ImagePaths {
   static String eyesIconOPened = "eyesIconOPened.png";
   static String eyesIconClose = "eyeCloseIcon.png";
   static String phoneIcon = "call.png";
+  static String avatarUser = "avatarUser.webp";
+  static String searchIcon = "search-01.png";
 }

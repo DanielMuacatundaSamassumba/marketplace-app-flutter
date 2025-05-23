@@ -7,11 +7,12 @@ import 'package:marketplace_app/app/core/constants/image_paths.dart';
 import "package:marketplace_app/app/core/common/widgets/TextFieldCustomWidget.dart";
 import 'package:marketplace_app/app/core/enums/textfieldEnum.dart';
 import 'package:marketplace_app/app/core/theme/AppPallete.dart';
-import 'package:marketplace_app/app/core/validations/LoginFornValidation.dart';
+import 'package:marketplace_app/app/core/validations/AuthValidation.dart';
 import 'package:marketplace_app/app/domain/repositories/UserLoginRepository.dart';
 import 'package:marketplace_app/app/infra/Irepository/UserLoginImp.dart';
 import 'package:get_it/get_it.dart';
 import 'package:marketplace_app/main.dart';
+import "package:marketplace_app/app/apresentations/Home.dart";
 
 class Login extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
@@ -52,7 +53,7 @@ class Login extends StatelessWidget {
                           controller: emailController,
                           validator:
                               (name) =>
-                                  LoginFormValidation.validationEmail(name),
+                                  AuthValidation.validationEmail(name),
                         ),
                       ),
 
@@ -71,7 +72,7 @@ class Login extends StatelessWidget {
                               controller: passwordController,
                               validator:
                                   (name) =>
-                                      LoginFormValidation.validationPassword(
+                                      AuthValidation.validationPassword(
                                         name,
                                       ),
                               hideIconPasswordClose: ImagePaths.eyesIconClose,
@@ -81,7 +82,9 @@ class Login extends StatelessWidget {
                               margin: EdgeInsets.only(top: 30),
                               child: ButtonBgfullWideget(
                                 name: "Entrar",
-                                onPressFunction: () {},
+                                onPressFunction: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Home()));
+                                },
                                 height: 56,
                                 width: MediaQuery.of(context).size.width * 0.8,
                                 iconImage: ImagePaths.arrowRight,
